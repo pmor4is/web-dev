@@ -1,0 +1,207 @@
+/* Flexbox */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    /* scroll-behavior: smooth ao trocar alguma sessão, ao invés de uma transição rápida, ele deixa de forma mais suave */
+    scroll-behavior: smooth;
+}
+
+#primaryMenu {
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: caso não haja espaço no viewport, ele quebra a coluna, passando para a linha de baixo */
+    flex-wrap: wrap;
+    /* position: fixed deixa o menu sempre fixo na tela */
+    position: fixed;
+    /* width: 100vw como colocou a barra fixa, alterou a propriedade de largura, então é necessario fixar o tamanho dela como ocupando toda a largura */
+    /* vw: viewport width relacionado ao tamanhho da largura da tela */
+    width: 100vw;
+}
+
+#primaryMenu ul {
+    /* list-style: none: retira os marcadores da lista */
+    list-style: none;
+    background-color: #831883;
+    text-align: center;
+}
+
+#primaryMenu ul li {
+    /* display: inline-block deixa emm linhas ao inves de coluna */
+    display: inline-block;
+}
+
+#primaryMenu ul li a {
+    /* text-decoration: none: retira o sublinhado do hiperlink */
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 15px;
+    display: inline-block;
+    /* transition: 1s: efeito de fade combinado com o hover */
+    transition: 1s;
+    color: white;
+}
+/* #primaryMenu ul li a:hover ao passar o mouse em cima, muda de cor e deixa opaco para poder ler o texto */
+#primaryMenu ul li a:hover {
+    background-color: #e6e6e6;
+    opacity: 0.5;
+    /* color: black transforma a cor do texto que era branco em preto */
+    color: black;
+}
+
+#firstSection {
+    background-color: #bbc8e9;
+    height: 60vh;
+    /* background-image: utilização de imagem no fundo da seção */
+    background-image: url("../images/endless-constellation.svg");
+    /* display: flex - transforma a seção em container (flexbox) */
+    display: flex;
+    /* flex-direction: direciona os elementos em coluna ou fileira (row)*/
+    flex-direction: column;
+    /* align-items: posiciona os itens no eixo y */
+    align-items: center;
+    /* justify-content: posiciona no container */
+    justify-content: center;
+}
+
+#secondSection {
+    background-color: #848ec7;
+    /* vh: viewport height -> tamanho da tela em branco (já deixa responsivo) */
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#thirdSection {
+    background-color: #abb0da;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#containerTable {
+    background-color: #bac0e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+    text-align: center;
+}
+
+.unordinaryListStyle {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    background-color: #8b45db;
+    color: white;
+    font-size: 1.5rem;
+    /* list-style-type: coloca ícones na frente da lista */
+    list-style-type: "\1F44D";
+}
+
+.ordinaryListStyle {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    background-color: #492275;
+    color: white;
+    font-size: 1.5rem;
+}
+
+#table {
+    margin: 0 auto;
+    /* width: distancia as colunas */
+    width: 800px;
+    border: 1px solid black;
+    border-collapse: collapse;
+    /* box-shadow: adiciona sompra */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+#table thead tr {
+    background-color: #848ec7;
+    text-align: center;
+}
+
+#table thead th {
+    padding: 15px;
+}
+
+#table tr {
+    border: 1px solid black;
+}
+
+/* tr:nth-of-type(even): tr (coluna), nth-of-type(even): que são impares */
+#table tr:nth-of-type(even) {
+    background-color: #d3d1d1;
+}
+
+#imcControls {
+    display: flex;
+    flex-direction: column;
+}
+
+#imcContainer {
+    background-color: #aaa9a9;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    padding-inline: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10%;
+}
+
+#awnsersContainer {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titleFont {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.5rem;
+    color: white;
+}
+
+img {
+    height: 70%;
+    width: 70%;
+}
+
+input {
+    font-size: larger;
+    margin-top: 2px;
+    margin-bottom: 20px;
+}
+
+button {
+    font-size: larger;
+
+}

@@ -1,0 +1,64 @@
+<!-- Hello World HTML/CSS-->
+
+<!--Ao digitar "!" no VSCode, ele iniciará todo o cabeçalho inicial-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Nome que ficará presente na aba do navegador-->
+    <title>Hello world</title>
+    <!--CSS como arquivo externo ao HTML - Inserção de arquivo css no index-->
+    <link rel="stylesheet" href="css/style.css">
+    <!--CSS com definição interna ao HTML-->
+    <style>
+        h3 {
+            font-family: 'Arial';
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--style="...": Estilo como propriedade nas tags HTML-->
+    <div style="align-items: center; display: flex; justify-content: center;">
+        <header>
+            Aula inicial
+        </header>
+    </div>
+    <div class="div">
+        <!--class="title": CSS como arquivo externo ao HTML-->
+        <h1 class="title">Título</h1>
+        <!--p: parágrafo-->
+        <p class="first-description"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam, hic corporis <br>
+           similique facere dignissimos, itaque libero corrupti vel doloremque id veritatis <br>
+           voluptatibus repudiandae velit at asperiores eius ipsam dolorum omnis.</p>
+        <h3 id="secondary-title">
+            Nhaaaa
+        </h3>
+        <h4>
+            meow
+        </h4>
+            <!--a: add links-->
+           <a class="image-style" href="https://httpcats.com/" target="_blank">
+            Cats status code
+            <!--img: adiciona imagens com link externo-->
+            <img src="https://aliancatraducoes.com/wp-content/uploads/2019/10/o-que-sao-cat-tools.jpg" height="100" alt="cute cat"/>
+        </a>
+        <p class="status-code-subtitle">Aqui você encontra status HTML com descrições</p>
+        <h4>meow</h4>
+    </div>
+    <div>
+        <footer class="footer">
+            <h1 >
+                <!--img: adiciona imagens com link interno-->
+                <img class="image-style" src="/dev-web/dev-web/assets/images/drunk-cat.jpeg"> 
+                
+            </h1>
+            <a href="index.html">
+                Pagina inicial
+            </a>
+        </footer>
+    </div>
+</body>
+</html>

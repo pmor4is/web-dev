@@ -1,0 +1,130 @@
+<!--Aula 3: SEO e Flexbox-->
+
+<!DOCTYPE html>
+<!--lang: idioma do site-->
+<html lang="pt-br">
+
+<head>
+    <!-- SEO -->
+    <!--charset: mapa de caracteres (ANSI: padrão americano (sem ç), UTF-8: padrão internacional de caracteres)-->
+    <meta charset="UTF-8">
+    <!--viewport: área em branca do browser-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--keywords: palavras chaves relevante a página, para direcionar o buscador-->
+    <meta name="keywords" content="arquitetura, casa, construção">
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script defer type="text/javascript" src="./assets/js/code.js"></script>
+    <title>Aula SEO e Flexbox</title>
+</head>
+
+<body>
+    <!-- BARRA DE NAVEGAÇÃO -->
+    <!-- nav: barra superior de navegação -->
+    <nav id="primaryMenu">
+        <ul>
+            <li> <a href="#firstSection">Sessão principal</a> </li>
+            <li> <a href="#secondSection">Imagem</a> </li>
+            <li> <a href="#thirdSection">Cálculo IMC</a> </li>
+            <li> <a href="#fourthSection">Listas</a> </li>
+            <li> <a href="./page2.html">Pagina exterior</a> </li>
+        </ul>
+    </nav>
+
+
+    <!--Para o buscador, adicionar seção, faz diferença no ranking-->
+    <section id="firstSection">
+        <h1 class="titleFont">Title</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus accumsan interdum urna et imperdiet.
+            Integer convallis diam vitae odio cursus tristique. Quisque facilisis venenatis imperdiet. Nam venenatis
+            nisl in aliquam semper. Etiam in metus non tellus varius lacinia. Ut accumsan sed arcu vel tempus. Cras
+            convallis est a magna egestas porttitor. Nunc malesuada dignissim magna non ultricies. Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit.
+        </p>
+    </section>
+    
+    <section id="secondSection">
+        <h2 class="titleFont">Meow</h2>
+        <img src="./assets/images/undraw_cat_epte.svg ">
+    </section>
+    
+    <section id="thirdSection">
+        <div id="imcContainer">
+            <h2 class="titleFont">Cálculo do IMC</h2>
+            <div id="imcControls">
+                <!--label: rótulo ao componente (ao clicar no label, vai para o id especifica)-->
+                <label for="heightEdit">Digite a altura</label>
+                <input id="heightEdit" type="number" placeholder="Altura" />
+                <label for="weightEdit">Digite o peso</label>
+                <input id="weightEdit" type="number" placeholder="Peso" />
+                <button id="imcButton" type="button" onclick="imc()">Calcular</button>
+                <div id="awnsersContainer">
+                    <p id="imcAwnser"></p>
+                    <p id="classificationAwnser"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="fourthSection">
+        <!-- TABELAS -->
+        <div id="containerTable">
+            <table id="table">
+                <!-- caption: titulo da tabela -->
+                <caption>
+                    Titulo geral
+                </caption>
+                <!-- thead: títulos da coluna -->
+                <thead>
+                    <!-- tr: linhas -->
+                    <tr>
+                        <!-- th: linhas dos títulos das colunas -->
+                        <th>Titulo coluna 1</th>
+                        <th>Titulo coluna 2</th>
+                        <th>Titulo coluna 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>conteudo 1</td>
+                        <td>conteudo 2</td>
+                        <td>conteudo 3</td>
+                    </tr>
+                    <tr>
+                        <!-- colspan: mescla linha -->
+                        <td colspan="2">conteudo 1</td>
+                        <!-- rowspan: mescla coluna -->
+                        <td rowspan="2">conteudo 3</td>
+                    </tr>
+                    <tr>
+                        <td>conteudo 1</td>
+                        <td>conteudo 2</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">rodapé</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    
+        <!-- LISTAS -->
+        <!-- ul: lista não ordenada -->
+        <ul class="unordinaryListStyle">
+            Tabela não ordenada
+            <!-- li: linha da lista -->
+            <li>Item 1</li>
+            <li>Item 2</li>
+        </ul>
+        <!-- ol: lista ordenada -->
+        <ol class="ordinaryListStyle">
+            Tabela ordenada
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ol>
+    </section>
+</body>
+
+</html>

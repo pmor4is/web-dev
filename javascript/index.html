@@ -1,0 +1,45 @@
+<!--Aula 2: JavaScript-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula JavaScript</title>
+    <!--Associar arquivo externo de JavaScript-->
+    <!--defer: espera carregar todo o HTML para carregar o JavaScript. 
+        Caso aqui referencie alguma parte do código no body e não tiver "defer", terá erro, pois não carregará o HTML antes do JS-->
+    <script defer type="text/javascript" src="/dev-web/Aula 2/assets/js/code.js"></script>
+</head>
+
+<body>
+    <h1>Initial title</h1>
+    <p id="paragraph1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <!--button: adiciona botão
+    onclick="message()": ao clicar, chamará a função message presente no code.js-->
+    <button type="button" onclick="message()">Button</button>
+    <p id="paragraph2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+    <button type="button" onclick="getParagraph()">Lista paragrafos</button>
+    
+    <br>
+
+    <input id="name-input" type="text" placeholder="digite"/>
+    <input id="age-input" type="number" placeholder="numero"/>
+    <button type="button" onclick="dataProcessing()">Processar dados</button>
+    <p id="responseProcessing"></p>
+
+    <input id="number1" type="number" placeholder="Numero 1"/>
+    <input id="number2" type="number" placeholder="Numero 2"/>
+    <button type="button" onclick="numbersSum()">Soma valores</button>
+    <p id="sumProcessing">O resultado da soma é: </p>
+
+
+    <button type="button" onclick="getUsersByFetch()">Lista Usuarios</button>
+</body>
+
+<!--Script interno ao HTML-->
+<script type="text/javascript">
+    console.log("type of output")
+</script>
+</html>
