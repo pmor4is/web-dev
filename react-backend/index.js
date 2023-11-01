@@ -65,7 +65,7 @@ app.get("/usuarios", (req, res) => {
     console.log(error);
   }
 });
-
+ 
 // Criação de rota que filtra um usuário específico
 // Primeiro paramentro: construção de rota com variavel.
 // Segundo parâmetro: arrow function

@@ -12,9 +12,11 @@ export default function CrudUsuarios() {
   const [peso, setPeso] = useState("");
   const [operacao, setOperacao] = useState("");
 
-
-  const url = "react-backend-gamma.vercel.app/usuarios/"
+  // Conexão com o backend criado na pasta react-backend
+  // URL cadastrada no deploy da Vercel
+  const url = "react-backend-gamma.vercel.app/usuarios/";
   
+  // useEffect para pegar os dados do banco de dados
   useEffect(() => {
     fetch(url)
     .then((respFetch) => respFetch.json())
@@ -24,7 +26,17 @@ export default function CrudUsuarios() {
   
   return (
     <div>
-      <h1>Titulo</h1>
+      <h1>Lista de usuarios</h1>
+
+      {/* Deve usar map ao ivés de ForEach pois deve ser retornado array */}
+      {usuarios.map( (user) => {
+        return (
+          <p>{user.name}</p>
+          // user.email,
+          // user.altura,
+          // user.peso
+        )
+      })}
     </div>
   )
 }
