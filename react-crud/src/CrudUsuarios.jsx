@@ -13,11 +13,18 @@ export default function CrudUsuarios() {
   const [operacao, setOperacao] = useState("");
 
 
-
+  const url = "react-backend-gamma.vercel.app/usuarios/"
   
-  
+  useEffect(() => {
+    fetch(url)
+    .then((respFetch) => respFetch.json())
+    .then((respJson) => setUsuarios(respJson))
+    .catch((err) => console.log(err));
+    }, [url]);
   
   return (
-    <div>CrudUsuarios</div>
+    <div>
+      <h1>Titulo</h1>
+    </div>
   )
 }

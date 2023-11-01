@@ -1,6 +1,26 @@
 # Backend
 Utilizando React, Node.js
 
+##### Bibliotecas utilizadas:
+Para esse projeto foram utilizadas as seguintes bibliotecas abaixo:
+~~~ bash
+npm install express dotenv cors body-parser
+
+# Biblioteca para o acesso ao banco de dados
+npm install pg
+
+# Biblioteca para LiveServer
+npm install --save-dev nodemon
+~~~
+
+Para monitorar o servidor de forma real, adicionar ao item scripts do package.json 
+~~~
+"scripts": {
+  "start": "nodemon index.js", 
+  ....
+}
+~~~
+
 Rotas de queries:
 * [GET] 
 * DELETE
