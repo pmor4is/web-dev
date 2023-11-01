@@ -45,7 +45,6 @@ app.get("/", (req, res) => {
   res.send("Ok – Servidor disponível.");
 });
 
-
 // Criação da rota usuários
 app.get("/usuarios", (req, res) => {
   try {
@@ -57,20 +56,20 @@ app.get("/usuarios", (req, res) => {
         // Retorna uma mensagem para a variavel err, se não tiver erro na consulta
         return console.error("Erro ao executar a qry de SELECT", err);
       }
-    // Envia uma resposta caso a consulta tenha sucesso
-    res.send(result.rows);
-    console.log("Chamou get usuarios");
+      // Envia uma resposta caso a consulta tenha sucesso
+      res.send(result.rows);
+      console.log("Chamou get usuarios");
     });
     // Verifica se houve erro na resposta
   } catch (error) {
     console.log(error);
   }
-})
+});
 
 // Criação de rota que filtra um usuário específico
 // Primeiro paramentro: construção de rota com variavel.
 // Segundo parâmetro: arrow function
-app.get("/usuarios/:id", (req,res) => {
+app.get("/usuarios/:id", (req, res) => {
   try {
     // req.params.id: seleciona o id como parametro da resposta
     console.log("Chamou /:id " + req.params.id);
@@ -83,34 +82,36 @@ app.get("/usuarios/:id", (req,res) => {
           return console.error("Erro ao executar a qry de SELECT id", err);
         }
         if (results.rowCount == 0) {
-          res.send("Usuario com o codigo " + req.params.id + " não existe no banco de dados");
-        } else
-        res.send(result.rows);
+          res.send(
+            "Usuario com o codigo " +
+              req.params.id +
+              " não existe no banco de dados"
+          );
+        } else res.send(result.rows);
         //console.log(result;
       }
-    )
+    );
   } catch (error) {
     console.log(error);
   }
-})
+});
 
 //Se o verbo for delete, haverá uma lógica de programação para determinar o comportamento da rota
 app.delete("/usuarios/:id", (req, res) => {
   try {
     console.log("Chamou delete /:id " + req.params.id);
     const id = req.params.id;
-    client.query (
-      "DELETE FROM Usuarios WHERE id = $1", 
-      [id], 
+    client.query(
+      "DELETE FROM Usuarios WHERE id = $1",
+      [id],
       function (err, result) {
         if (err) {
           return console.error("Erro ao executar a qry de DELETE", err);
         } else {
           if (result.rowCount == 0) {
-            res.status(400).json({info: "Registro não encontrado."});
-          }
-          else {
-            res.status(200).json({info: "Registro excluído. Código ${id}"});
+            res.status(400).json({ info: "Registro não encontrado." });
+          } else {
+            res.status(200).json({ info: "Registro excluído. Código ${id}" });
           }
         }
         console.log(result);
@@ -119,8 +120,52 @@ app.delete("/usuarios/:id", (req, res) => {
   } catch (error) {
     console.log(error);
   }
-})
+});
 
+app.post("/usuaris", (req, res) => {
+  try {
+    console.log("alguém enviou um post com os dados: ", req.body);
+    const { nome, email, altura, peso } = req.body;
+    client.query(
+      "INSERT INT Usuarios (nome, email, altura, peso) VALUES ($1, $2, $3, $4) RETURNING * ",
+      [nome, email, altura, peso],
+      (err, result) => {
+        if (err) {
+          return console.error("Erro ao executar a query de INSERT", err);
+        }
+        const { id } = result.row[0];
+        res.setHeader("id", "${id}");
+        res.status(201).json(result.row[0]);
+        console.log(result);
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.put("/usuarios/:id", (req, res) => {
+  try {
+    console.log("Alguém enviou um update com os dados:", req.body);
+    const id = req.params.id;
+    const { nome, email, altura, peso } = req.body;
+    client.query(
+      "UPDATE Usuarios SET nome=$1, email=$2, altura=$3, peso=$4 WHERE id =$5 ",
+      [nome, email, altura, peso, id],
+      function (err, result) {
+        if (err) {
+          return console.error("Erro ao executar a qry de UPDATE", err);
+        } else {
+          res.setHeader("id", id);
+          res.status(202).json({ identificador: id });
+          console.log(result);
+        }
+      }
+    );
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 // Se houver uma requisição, fica ouvindo na porta do .env
 // Deve ser o ultimo a ser escrito
