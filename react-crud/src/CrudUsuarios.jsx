@@ -51,8 +51,9 @@ export default function CrudUsuarios() {
 
   function atualizaListaUsuarioEditado(response) {
     console.log(response);
-    let { id } = response.data;
-    const index = usuarios.findIndex((item) => item.id == id);
+    // identifier: vem da API criada em react-backend
+    let { identifier } = response.data;
+    const index = usuarios.findIndex((item) => item.identifier === identifier);
     let users = usuarios;
     users[index].nome = nome;
     users[index].email = email;
