@@ -135,7 +135,7 @@ app.post("/usuarios", (req, res) => {
         }
         const { id } = result.row[0];
         res.setHeader("id", '${id}');
-        res.status(201).json(result.row[0]);
+        res.status(201).json(result.rows[0]);
         console.log(result);
       }
     );
