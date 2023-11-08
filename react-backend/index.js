@@ -127,14 +127,14 @@ app.post("/usuarios", (req, res) => {
     console.log("alguém enviou um post com os dados: ", req.body);
     const { nome, email, altura, peso } = req.body;
     client.query(
-      "INSERT INT Usuarios (nome, email, altura, peso) VALUES ($1, $2, $3, $4) RETURNING * ",
+      "INSERT INTO Usuarios (nome, email, altura, peso) VALUES ($1, $2, $3, $4) RETURNING * ",
       [nome, email, altura, peso],
       (err, result) => {
         if (err) {
           return console.error("Erro ao executar a query de INSERT", err);
         }
         const { id } = result.row[0];
-        res.setHeader("id", "${id}");
+        res.setHeader("id", '${id}');
         res.status(201).json(result.row[0]);
         console.log(result);
       }
