@@ -124,23 +124,23 @@ app.delete("/usuarios/:id", (req, res) => {
 
 app.post("/usuarios", (req, res) => {
   try {
-    console.log("alguém enviou um post com os dados: ", req.body);
+    console.log("Post requisition", req.body);
     const { nome, email, altura, peso } = req.body;
     client.query(
       "INSERT INTO Usuarios (nome, email, altura, peso) VALUES ($1, $2, $3, $4) RETURNING * ",
       [nome, email, altura, peso],
-      (err, result) => {
+      function (err, result) {
         if (err) {
-          return console.error("Erro ao executar a query de INSERT", err);
+          return console.error("INSERT query error", err);
         }
-        const { id } = result.row[0];
+        const { id } = result.rows[0];
         res.setHeader("id", '${id}');
         res.status(201).json(result.rows[0]);
         console.log(result);
       }
     );
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 
