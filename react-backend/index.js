@@ -28,7 +28,7 @@ var client = new Client(conString);
 // Função para verificar se há conexão com o banco de dados client, que é associado ao Postgrree
 client.connect(function (err) {
   if (err) {
-    return console.error("Não foi possível conectar ao banco.", err);
+    return console.error("Couldn't connect to database", err);
   }
   client.query("SELECT NOW()", function (err, result) {
     if (err) {
@@ -42,7 +42,7 @@ client.connect(function (err) {
 app.get("/", (req, res) => {
   console.log("Response ok.");
   //Resposta para verificar se o servidor esta online
-  res.send("Ok – Servidor disponível.");
+  res.send("Ok – Server online.");
 });
 
 // Criação da rota usuários
@@ -72,7 +72,7 @@ app.get("/usuarios", (req, res) => {
 app.get("/usuarios/:id", (req, res) => {
   try {
     // req.params.id: seleciona o id como parametro da resposta
-    console.log("Chamou /:id " + req.params.id);
+    console.log("Get requisition /:id " + req.params.id);
     client.query(
       // $1: utilizado para passar parametro
       "SELECT * FROM Usuarios WHERE id = $1",
@@ -99,7 +99,7 @@ app.get("/usuarios/:id", (req, res) => {
 //Se o verbo for delete, haverá uma lógica de programação para determinar o comportamento da rota
 app.delete("/usuarios/:id", (req, res) => {
   try {
-    console.log("Chamou delete /:id " + req.params.id);
+    console.log("Delete requisition /:id " + req.params.id);
     const id = req.params.id;
     client.query(
       "DELETE FROM Usuarios WHERE id = $1",
@@ -146,7 +146,7 @@ app.post("/usuarios", (req, res) => {
 
 app.put("/usuarios/:id", (req, res) => {
   try {
-    console.log("Alguém enviou um update com os dados:", req.body);
+    console.log("Put requisition", req.body);
     const id = req.params.id;
     const { nome, email, altura, peso } = req.body;
     client.query(
@@ -154,7 +154,7 @@ app.put("/usuarios/:id", (req, res) => {
       [nome, email, altura, peso, id],
       function (err, result) {
         if (err) {
-          return console.error("Erro ao executar a qry de UPDATE", err);
+          return console.error("UPDATE query error", err);
         } else {
           res.setHeader("id", id);
           res.status(202).json({ identifier: id });
