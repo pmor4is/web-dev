@@ -122,7 +122,7 @@ app.delete("/usuarios/:id", (req, res) => {
   }
 });
 
-app.post("/usuaris", (req, res) => {
+app.post("/usuarios", (req, res) => {
   try {
     console.log("alguém enviou um post com os dados: ", req.body);
     const { nome, email, altura, peso } = req.body;

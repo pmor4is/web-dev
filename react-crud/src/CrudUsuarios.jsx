@@ -53,6 +53,7 @@ export default function CrudUsuarios() {
     console.log(response);
     // identifier: vem da API criada em react-backend
     let { identifier } = response.data;
+    // Busca em usuários, o id da pessoa
     const index = usuarios.findIndex((item) => item.identifier === identifier);
     let users = usuarios;
     users[index].nome = nome;
