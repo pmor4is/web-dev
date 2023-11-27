@@ -81,7 +81,7 @@ app.get("/usuarios/:id", (req, res) => {
         if (err) {
           return console.error("Erro ao executar a qry de SELECT id", err);
         }
-        if (results.rowCount == 0) {
+        if (result.rowCount == 0) {
           res.send(
             "Usuario com o codigo " +
               req.params.id +
@@ -99,19 +99,19 @@ app.get("/usuarios/:id", (req, res) => {
 //Se o verbo for delete, haverá uma lógica de programação para determinar o comportamento da rota
 app.delete("/usuarios/:id", (req, res) => {
   try {
-    console.log("Delete requisition /:id " + req.params.id);
+    console.log("DELETE requisition with id: " + req.params.id);
     const id = req.params.id;
     client.query(
       "DELETE FROM Usuarios WHERE id = $1",
       [id],
-      function (err, result) {
-        if (err) {
-          return console.error("Erro ao executar a qry de DELETE", err);
+      function (error, result) {
+        if (error) {
+          return console.error("Error executing DELETE query", error);
         } else {
           if (result.rowCount == 0) {
-            res.status(400).json({ info: "Registro não encontrado." });
+            res.status(400).json({ info: "Register not found." });
           } else {
-            res.status(200).json({ info: "Registro excluído. Código ${id}" });
+            res.status(200).json({ info: "Register deleted. Code id: ${id}" });
           }
         }
         console.log(result);
